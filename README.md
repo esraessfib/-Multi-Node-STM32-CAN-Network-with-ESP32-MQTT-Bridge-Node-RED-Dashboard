@@ -11,11 +11,11 @@ Les données sont ensuite affichées sur **Node-RED** et sur **smartphone via Bl
 ## 🖥️ Architecture du système
 
 ```
- [STM32 #1] Potentiomètres  ┐
-                            │
-                            │   CAN Bus
-                            │
- [STM32 #2] Température     ┘
+ [STM32 #1] 3 Potentiomètres  ┐
+        ↓ (Sleep mode)        │
+                              │   CAN Bus
+                              │
+ [STM32 #2] Température       ┘
          ↓ (Sleep mode)
  ─────────────────────────────────────
  [STM32 #3] Nœud Central
@@ -28,9 +28,8 @@ Les données sont ensuite affichées sur **Node-RED** et sur **smartphone via Bl
  ─────────────────────────────────────
                 🌐 Internet
  ─────────────────────────────────────
- [ESP32 #2] MQTT Subscriber → UART → STM32 #4 → Bluetooth → Smartphone
- ─────────────────────────────────────
-                       📊 Node-RED Dashboard
+ 
+        📊 Node-RED Dashboard
 ```
 
 ---
@@ -43,19 +42,16 @@ Les données sont ensuite affichées sur **Node-RED** et sur **smartphone via Bl
 * 🔄 **Communication série (USART)** entre STM32 et ESP32.
 * 🌍 **Transmission MQTT via ESP32** vers un broker Mosquitto.
 * 📊 **Interface Node-RED** pour visualisation en temps réel.
-* 📱 **Affichage mobile via Bluetooth** (STM32 + ESP32 bridge).
-
 ---
 
 ## 🛠️ Composants utilisés
 
 * 4x STM32F407 discovery
 * 3x MCP transceiver 2551
-* 2x ESP32 Wi-Fi/Bluetooth
-* 1x Broker MQTT (Mosquitto)
-* Potentiomètres (x3)
+*  ESP32 Wi-Fi/Bluetooth
+*  Broker MQTT (Mosquitto)
+* 3x Potentiomètres 
 * Capteur de température  DS1621 
-* Smartphone avec application Bluetooth
 * Interface **Node-RED**
 
 ---
@@ -82,7 +78,6 @@ Les données sont ensuite affichées sur **Node-RED** et sur **smartphone via Bl
 4. **Diffusion des données** :
 
    * ESP32 #2 récupère les données du serveur MQTT.
-   * Transmission vers STM32 #4, qui les diffuse via **Bluetooth** au smartphone.
    * Affichage parallèle sur **Node-RED Dashboard**.
 
 ---
@@ -116,11 +111,6 @@ Les données sont ensuite affichées sur **Node-RED** et sur **smartphone via Bl
      npm install -g --unsafe-perm node-red
      ```
    * Ajouter un **node MQTT subscriber** pour afficher les données.
-
-5. **Smartphone**
-
-   * Connecter via Bluetooth au STM32 #4.
-   * Afficher les données avec une application type **Serial Bluetooth Terminal**.
 
 ---
 
