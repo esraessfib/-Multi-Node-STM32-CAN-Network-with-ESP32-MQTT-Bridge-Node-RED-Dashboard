@@ -3,8 +3,8 @@
 #include <PubSubClient.h>
 
 // ---- Wi-Fi ----
-const char* ssid     = "Galaxy A04s 3535";
-const char* password = "crar5370";
+const char* ssid     = "*******";
+const char* password = "********";
 
 // ---- MQTT (Mosquitto public) ----
 const char* mqtt_server = "test.mosquitto.org";
@@ -17,8 +17,8 @@ const char* topicV2 = "stm32/pot/V2";
 const char* topicV3 = "stm32/pot/V3";
 
 // ---- UART ----
-#define RXD2  25 //16  // vert RX ESP32 ← TX STM32
-#define TXD2 26 //17  // TX ESP32 → RX STM32
+#define RXD2  25 // RX ESP32 ← TX STM32
+#define TXD2 26 // TX ESP32 → RX STM32
 
 String uartBuffer = "";
 
@@ -98,3 +98,4 @@ void loop() {
 
   delay(50);
 }
+
