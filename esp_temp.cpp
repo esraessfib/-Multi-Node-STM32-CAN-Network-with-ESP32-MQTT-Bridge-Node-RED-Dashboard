@@ -4,8 +4,8 @@
 #include <PubSubClient.h>
 
 // ---- Wi-Fi ----
-const char* ssid     = "GalaxyA52";
-const char* password = "esra1234";
+const char* ssid     = "*******";
+const char* password = "******";
 
 // ---- MQTT ----
 const char* mqtt_server = "test.mosquitto.org"; // IP de ton broker
@@ -28,8 +28,8 @@ void connectMQTT() {
   }
 }
 
-#define RXD2 25//16    // vert RX ESP32 → TX STM32
-#define TXD2 26//17  // TX ESP32 → RX STM32
+#define RXD2 25// RX ESP32 → TX STM32
+#define TXD2 26// TX ESP32 → RX STM32
 String temperatureData = "";
 
 void setup() {
@@ -78,3 +78,4 @@ void loop() {
   }
   delay(100);
 }
+
